@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BOOKNEST - Sistem Informasi Perpustakaan digital sederhana untuk menelusuri koleksi buku.">
+  <title>BOOKNEST - Sistem Informasi Perpustakaan</title>
+
+  <!-- File CSS dihubungkan di sini -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== A. NAVBAR ========== -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#beranda" class="logo">BOOKNEST</a>
+      <nav aria-label="Navigasi utama">
+        <ul class="nav-menu">
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#katalog">Katalog Buku</a></li>
+          <li><a href="#tentang">Tentang Kami</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== B. HERO SECTION ========== -->
+    <section id="beranda" class="hero">
+      <div class="container">
+        <h1>Selamat Datang di Perpustakaan BOOKNEST</h1>
+        <p>
+          BOOKNEST menyediakan informasi koleksi buku dari berbagai bidang,
+          mulai dari pemrograman, pendidikan, fiksi, sejarah, sains, hingga bisnis.
+          Cari buku yang Anda butuhkan dan lihat ketersediaannya dengan mudah.
+        </p>
+        <a href="#katalog" class="btn">Jelajahi Koleksi Buku</a>
+      </div>
+    </section>
+
+    <!-- ========== C. STATISTIK ========== -->
+    <section class="stats" aria-label="Statistik perpustakaan">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <!-- Angka diisi otomatis oleh script.js -->
+          <span class="stat-number" id="statTotalBuku">0</span>
+          <span class="stat-label">Total koleksi buku</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="statTotalKategori">0</span>
+          <span class="stat-label">Kategori buku</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== D. KATALOG ========== -->
+    <section id="katalog" class="section">
+      <div class="container">
+        <h2>Katalog Buku</h2>
+        <p class="section-desc">Gunakan pencarian, filter, dan pengurutan untuk menemukan buku.</p>
+
+        <!-- Kontrol pencarian, filter, dan pengurutan -->
+        <div class="controls">
+          <div class="control">
+            <label for="searchInput">Cari buku</label>
+            <input type="search" id="searchInput" placeholder="Ketik judul atau nama penulis">
+          </div>
+
+          <div class="control">
+            <label for="categoryFilter">Kategori</label>
+            <select id="categoryFilter">
+              <option value="semua">Semua kategori</option>
+              <!-- Pilihan kategori ditambahkan otomatis oleh script.js -->
+            </select>
+          </div>
+
+          <div class="control">
+            <label for="sortSelect">Urutkan</label>
+            <select id="sortSelect">
+              <option value="default">Urutan awal</option>
+              <option value="judul-az">Judul A–Z</option>
+              <option value="tahun-terbaru">Tahun terbit terbaru</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="result-info" id="resultInfo" aria-live="polite"></p>
+
+        <!-- Kartu buku dibuat otomatis oleh script.js -->
+        <div class="book-grid" id="bookGrid"></div>
+
+        <!-- Pesan jika buku tidak ditemukan -->
+        <p class="empty-message" id="emptyMessage" hidden>
+          Buku tidak ditemukan. Coba kata kunci atau kategori lain.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== E. PROFIL PERPUSTAKAAN ========== -->
+    <section id="tentang" class="section section-alt">
+      <div class="container about">
+        <h2>Tentang Kami</h2>
+        <p>
+          BOOKNEST adalah sistem informasi perpustakaan berbasis web yang menampilkan
+          koleksi buku dalam bentuk katalog digital. Website ini dibuat sebagai proyek
+          Ujian Tengah Semester untuk melatih penggunaan HTML, CSS, dan JavaScript.
+        </p>
+        <p>
+          Perpustakaan digital membantu pembaca mencari buku lebih cepat, mengetahui
+          ketersediaan buku sebelum datang ke perpustakaan, serta membaca ringkasan
+          isi buku untuk memilih bacaan yang sesuai kebutuhan.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== F. FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 BOOKNEST - Sistem Informasi Perpustakaan. Seluruh hak cipta dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- ========== MODAL DETAIL BUKU ========== -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalJudul">
+      <button type="button" class="modal-close" id="modalClose" aria-label="Tutup detail buku">&times;</button>
+
+      <div class="modal-body">
+        <img id="modalSampul" class="modal-cover" src="" alt="">
+
+        <div class="modal-info">
+          <h3 id="modalJudul"></h3>
+          <dl class="detail-list">
+            <div><dt>Penulis</dt><dd id="modalPenulis"></dd></div>
+            <div><dt>Kategori</dt><dd id="modalKategori"></dd></div>
+            <div><dt>Penerbit</dt><dd id="modalPenerbit"></dd></div>
+            <div><dt>Tahun terbit</dt><dd id="modalTahun"></dd></div>
+            <div><dt>Stok</dt><dd id="modalStok"></dd></div>
+            <div><dt>Status</dt><dd><span id="modalStatus" class="badge"></span></dd></div>
+          </dl>
+          <h4>Ringkasan</h4>
+          <p id="modalDeskripsi"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- File JavaScript dihubungkan di akhir body -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+/* =========================================================
+   BOOKNEST - style.css
+   Warna identitas:
+   Biru muda  : #DCEAF7
+   Biru gelap : #355070
+   Putih      : #FFFFFF
+   Abu-abu    : #F2F2F2
+   ========================================================= */
+
+/* ---------- Variabel warna (mudah diubah di satu tempat) ---------- */
+:root {
+  --biru-muda: #DCEAF7;
+  --biru-gelap: #355070;
+  --putih: #FFFFFF;
+  --abu: #F2F2F2;
+  --teks: #2b3a4a;
+  --teks-lembut: #5a6b7d;
+  --garis: #cfdbe8;
+  --hijau: #2e7d4f;
+  --merah: #b3402f;
+}
+
+/* ---------- Reset sederhana ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Memberi jarak agar judul section tidak tertutup navbar */
+  scroll-padding-top: 72px;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--teks);
+  background-color: var(--putih);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Fokus keyboard yang jelas */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--biru-gelap);
+  outline-offset: 2px;
+}
+
+/* ---------- Wadah konten ---------- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--biru-gelap);
+  color: var(--putih);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  min-height: 60px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.nav-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.navbar a:focus-visible {
+  outline-color: var(--putih);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background-color: var(--biru-muda);
+  padding: 80px 0;
+}
+
+.hero .container {
+  max-width: 760px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  line-height: 1.25;
+  color: var(--biru-gelap);
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 28px;
+}
+
+/* ---------- Tombol ---------- */
+.btn {
+  display: inline-block;
+  background-color: var(--biru-gelap);
+  color: var(--putih);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #263b54;
+}
+
+/* ---------- Statistik ---------- */
+.stats {
+  background-color: var(--abu);
+  padding: 28px 0;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  min-width: 200px;
+  text-align: center;
+  background-color: var(--putih);
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+  padding: 16px 24px;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--biru-gelap);
+  line-height: 1.2;
+}
+
+.stat-label {
+  color: var(--teks-lembut);
+}
+
+/* ---------- Section umum ---------- */
+.section {
+  padding: 64px 0;
+}
+
+.section-alt {
+  background-color: var(--abu);
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  color: var(--biru-gelap);
+  margin-bottom: 6px;
+}
+
+.section-desc {
+  color: var(--teks-lembut);
+  margin-bottom: 24px;
+}
+
+/* ---------- Kontrol katalog ---------- */
+.controls {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.control label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--biru-gelap);
+}
+
+.control input,
+.control select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--teks);
+  background-color: var(--putih);
+  border: 1px solid var(--garis);
+  border-radius: 6px;
+}
+
+.result-info {
+  font-size: 0.95rem;
+  color: var(--teks-lembut);
+  margin-bottom: 16px;
+}
+
+/* ---------- Grid & kartu buku ---------- */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: var(--putih);
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.book-card:hover {
+  border-color: var(--biru-gelap);
+}
+
+.book-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background-color: var(--biru-muda);
+}
+
+.card-body {
+  padding: 12px 14px 16px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--biru-gelap);
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.card-author {
+  font-size: 0.9rem;
+  color: var(--teks-lembut);
+  margin-bottom: 10px;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.card-category {
+  background-color: var(--biru-muda);
+  color: var(--biru-gelap);
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.card-year {
+  color: var(--teks-lembut);
+}
+
+/* ---------- Pesan kosong ---------- */
+.empty-message {
+  text-align: center;
+  padding: 40px 16px;
+  background-color: var(--abu);
+  border-radius: 8px;
+  color: var(--teks-lembut);
+}
+
+/* Atribut hidden harus tetap menyembunyikan elemen */
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- Tentang kami ---------- */
+.about {
+  max-width: 760px;
+}
+
+.about p {
+  margin-top: 12px;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background-color: var(--biru-gelap);
+  color: var(--putih);
+  text-align: center;
+  padding: 24px 0;
+  font-size: 0.9rem;
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(53, 80, 112, 0.55);
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--putih);
+  border-radius: 10px;
+  padding: 28px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--biru-gelap);
+  background-color: var(--abu);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background-color: var(--biru-muda);
+}
+
+.modal-body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+}
+
+.modal-cover {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: var(--biru-muda);
+}
+
+.modal-info h3 {
+  font-size: 1.4rem;
+  line-height: 1.3;
+  color: var(--biru-gelap);
+  margin: 0 40px 14px 0;
+}
+
+.modal-info h4 {
+  color: var(--biru-gelap);
+  margin: 18px 0 4px;
+}
+
+.detail-list div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--abu);
+}
+
+.detail-list dt {
+  font-weight: 600;
+  color: var(--teks-lembut);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--putih);
+}
+
+.badge.tersedia {
+  background-color: var(--hijau);
+}
+
+.badge.tidak-tersedia {
+  background-color: var(--merah);
+}
+
+/* =========================================================
+   RESPONSIF
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 800px) {
+  .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .control:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero {
+    padding: 56px 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Smartphone */
+@media (max-width: 560px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar-inner {
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 1.65rem;
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .section {
+    padding: 44px 0;
+  }
+
+  .modal {
+    padding: 20px 16px;
+  }
+
+  .modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-cover {
+    max-width: 160px;
+    margin: 0 auto;
+  }
+
+  .modal-info h3 {
+    margin-right: 0;
+  }
+
+  .detail-list div {
+    grid-template-columns: 95px 1fr;
+  }
+}
